@@ -1,5 +1,6 @@
+#!/bin/sh
 #
-#   Visa Single Sign-on System
+#   ODBC Shell
 #   Copyright (C) 2011 Bindle Binaries <syzdek@bindlebinaries.com>.
 #
 #   @BINDLE_BINARIES_BSD_LICENSE_START@
@@ -31,44 +32,29 @@
 #
 #   @BINDLE_BINARIES_BSD_LICENSE_END@
 #
-#   acinclude.m4 - custom m4 macros used by configure.ac
+#   @configure_input@
+#
+#   build-aux/git-package-version.sh - determines Git version if available
 #
 
-# AC_VISA_GIT_PACKAGE_VERSION()
-# -----------------------------------
-AC_DEFUN([AC_VISA_GIT_PACKAGE_VERSION],[dnl
+if test "x${1}" == "x";then
+   echo "Usage: ${0} srcdir version" 1>&2;
+   exit 1;
+fi;
 
-   if test -f ${srcdir}/.git/config;then
-      GPV=$(${ac_aux_dir}/git-package-version.sh "${srcdir}")
-      if test "x${GPV}" != "x";then
-         AC_MSG_NOTICE([using git package version ${GPV}])
+SRCDIR=$1;
+PACKAGE_VERSION=$2;
+
+if test -f ${SRCDIR}/.git/config;then
+   GPV=`git --git-dir=${SRCDIR}/.git describe --abbrev=7 HEAD 2> /dev/null`;
+   GPV=`echo ${GPV} |sed -e 's/-/./g'`;
+   GPV=`echo ${GPV} |sed -e 's/^v//g'`;
+   if test "x${GPV}" != "x";then
+      if test -d ${SRCDIR}/build-aux;then
+         echo "${GPV}" > ${SRCDIR}/build-aux/git-package-version 2> /dev/null;
       fi
-   elif test -f ${ac_aux_dir}/git-package-version;then
-      GPV=$(cat ${ac_aux_dir}/git-package-version 2> /dev/null)
-      if test "x${GPV}" != "x";then
-         AC_MSG_NOTICE([using cached git package version ${GPV}])
-      fi
-   fi
+      echo "${GPV}";
+   fi;
+fi
 
-   if test "x${GPV}" = "x";then
-      AC_MSG_WARN([unable to determine package version from Git tags])
-   else
-      #
-      # set internal variables
-      GIT_PACKAGE_VERSION=${GPV}
-      PACKAGE_VERSION=${GPV}
-      VERSION=${GPV}
-      #
-      # set substitution variables
-      AC_SUBST([GIT_PACKAGE_VERSION], [${GPV}])
-      AC_SUBST([PACKAGE_VERSION], [${GPV}])
-      AC_SUBST([VERSION], [${GPV}])
-      #
-      # set C/C++/Objc preprocessor macros
-      AC_DEFINE_UNQUOTED([GIT_PACKAGE_VERSION], ["${GIT_PACKAGE_VERSION}"], [package version determined from git repository])
-      AC_DEFINE_UNQUOTED([PACKAGE_VERSION], ["${GIT_PACKAGE_VERSION}"], [package version determined from git repository])
-      AC_DEFINE_UNQUOTED([VERSION], ["${GIT_PACKAGE_VERSION}"], [package version determined from git repository])
-   fi
-])dnl
-
-# end of M4 file
+# end of script
