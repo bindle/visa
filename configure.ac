@@ -34,15 +34,13 @@
 #   configure.in - automate compiling on a unix platform
 #
 
-AC_PREREQ(2.63)
+AC_PREREQ(2.65)
 
 AC_COPYRIGHT([Copyright (C) 2011 Bindle Binaries.])
-AC_REVISION(0.0.1)
-AC_INIT([Visa Single Sign-on System],[0.0.0],[syzdek@bindlebinaries.com],[visa])
+AC_REVISION(0.1)
+AC_INIT([Visa Single Sign-on System],[0.0],[syzdek@bindlebinaries.com],[visa])
 
 AC_SUBST([RELEASE_MONTH],     ["February 2009"])
-AC_SUBST([PACKAGE_COPYRIGHT], ["Copyright (C) 2011 Bindle Binaries."])
-AC_DEFINE_UNQUOTED(PACKAGE_COPYRIGHT, ["$PACKAGE_COPYRIGHT"], ["Copyright info"])
 
 # Version Info:
 #    Current    -- the current version number of this API
@@ -50,11 +48,15 @@ AC_DEFINE_UNQUOTED(PACKAGE_COPYRIGHT, ["$PACKAGE_COPYRIGHT"], ["Copyright info"]
 #    Age        -- How many seqential past API versions is supported by
 #                  this implementation
 # Format => Current:Revision:Age
-AC_SUBST(LIB_VERSION_INFO, 0:0:0)
-AC_SUBST(LIB_RELEASE_INFO, 0) # used by Win32 DLLs
+AC_SUBST([LIB_VERSION_CURRENT],  [0])
+AC_SUBST([LIB_VERSION_REVISION], [0])
+AC_SUBST([LIB_VERSION_AGE],      [0])
+AC_SUBST([LIB_VERSION_INFO],     [${LIB_VERSION_CURRENT}:${LIB_VERSION_REVISION}:${LIB_VERSION_AGE}])
+AC_SUBST([LIB_RELEASE_INFO],     [${LIB_VERSION_CURRENT}]) # used by Win32 DLLs
 
 AC_CONFIG_AUX_DIR([build-aux])
-AC_CONFIG_SRCDIR([acinclude.m4])
+AC_CONFIG_SRCDIR([configure.ac])
+#AC_CONFIG_LIBOBJ_DIR(compat)
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 
@@ -66,20 +68,23 @@ AC_CANONICAL_TARGET
 # configures for automake
 AM_INIT_AUTOMAKE(gnu std-options subdir-objects)
 
-# Compilers                                                       
+# Compilers
 AC_PROG_CC
+#AC_PROG_OBJC
+#AC_PROG_CXX
 AM_PROG_CC_C_O
 AC_PROG_INSTALL
 AC_USE_SYSTEM_EXTENSIONS # replaces AC_AIX AC_GNU_SOURCE AC_MINIX
 AC_C_BIGENDIAN
 
 # binary locations
-AC_PATH_PROG([SHELL],	sh bash,	[AC_MSG_ERROR([missing "sh"])], [$PATH])
-AC_CHECK_TOOLS(AR,	ar gar,		[AC_MSG_ERROR([missing binutil "ar"])])
-AC_CHECK_TOOLS(LD,	ld gld,		[AC_MSG_ERROR([missing binutil "ld"])])
-AC_CHECK_TOOLS(NM,	nm gnm,		[AC_MSG_ERROR([missing binutil "nm"])])
-AC_CHECK_TOOLS(RANLIB,	ranlib granlib,	[AC_MSG_ERROR([missing binutil "ranlib"])])
-AC_CHECK_TOOLS(STRIP,	strip gstrip,	[AC_MSG_ERROR([missing binutil "strip"])])
+AC_PROG_INSTALL
+AC_PATH_PROG([SHELL],   sh bash,        [AC_MSG_ERROR([missing "sh"])], [$PATH])
+AC_CHECK_TOOLS(AR,      ar gar,         [AC_MSG_ERROR([missing binutil "ar"])])
+AC_CHECK_TOOLS(LD,      ld gld,         [AC_MSG_ERROR([missing binutil "ld"])])
+AC_CHECK_TOOLS(NM,      nm gnm,         [AC_MSG_ERROR([missing binutil "nm"])])
+AC_CHECK_TOOLS(RANLIB,  ranlib granlib, [AC_MSG_ERROR([missing binutil "ranlib"])])
+AC_CHECK_TOOLS(STRIP,   strip gstrip,   [AC_MSG_ERROR([missing binutil "strip"])])
 
 # shell programs
 AC_PROG_AWK
@@ -88,14 +93,18 @@ AC_PROG_FGREP
 AM_PROG_LEX
 AC_PROG_LN_S
 
-AC_CHECK_LIB([ibrary],[books],,[AC_MSG_NOTICE([Suggest increasing funding to purchase books.])])
-AC_VISA_GIT_PACKAGE_VERSION
-
 # GNU Libtool Support
-AC_LIBTOOL_DLOPEN
-AC_DISABLE_FAST_INSTALL
-AC_LIBTOOL_WIN32_DLL
-AC_PROG_LIBTOOL
+LT_INIT(dlopen disable-fast-install win32-dll)
+
+# Geek Humor check
+AC_CHECK_LIB([ibrary],[books],,[AC_MSG_NOTICE([Suggest increasing funding to purchase books.])])
+
+# enables getopt_long if header and functions were found
+AC_CHECK_HEADERS([getopt.h], [AC_DEFINE_UNQUOTED(USE_GETOPT_LONG, 1, [Use GNU getopt_long])])
+
+
+# determine PACKAGE_VERSION via Git
+AC_VISA_GIT_PACKAGE_VERSION
 
 # Creates outputs
 AC_CONFIG_FILES([Makefile])
@@ -103,9 +112,11 @@ AC_OUTPUT
 
 # Show local config
 AC_MSG_NOTICE([ ])
+AC_MSG_NOTICE([   Visa and STAMP])
+AC_MSG_NOTICE([ ])
 AC_MSG_NOTICE([   Please send suggestions to:   $PACKAGE_BUGREPORT])
 AC_MSG_NOTICE([ ])
 AC_MSG_NOTICE([   run 'make all'])
 AC_MSG_NOTICE([ ])
 
-# end of autoconf script
+# end of configure.ac
