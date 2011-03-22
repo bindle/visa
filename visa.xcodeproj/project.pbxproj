@@ -11,19 +11,27 @@
 		A0C733B70F5BAE3000E777FB /* acinclude.m4 */ = {isa = PBXFileReference; explicitFileType = text.script; fileEncoding = 4; indentWidth = 3; path = acinclude.m4; sourceTree = "<group>"; tabWidth = 8; usesTabs = 1; };
 		A0C733C20F5BAFA200E777FB /* readme.texi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.texi; sourceTree = "<group>"; };
 		A0C733C30F5BAFA200E777FB /* titlepage.texi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = titlepage.texi; sourceTree = "<group>"; };
-		A0C733C90F5BB2F500E777FB /* visa.tags */ = {isa = PBXFileReference; explicitFileType = text.script; fileEncoding = 4; indentWidth = 3; path = visa.tags; sourceTree = "<group>"; tabWidth = 8; usesTabs = 1; };
 		A0C733D50F5BB3B500E777FB /* Makefile.am */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; indentWidth = 8; path = Makefile.am; sourceTree = "<group>"; tabWidth = 8; usesTabs = 1; };
+		A0E547941339593E0057EDA2 /* AUTHORS */ = {isa = PBXFileReference; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
+		A0E547951339593E0057EDA2 /* ChangeLog */ = {isa = PBXFileReference; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
+		A0E547961339593E0057EDA2 /* COPYING */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		A0E547971339593E0057EDA2 /* NEWS */ = {isa = PBXFileReference; lastKnownFileType = text; path = NEWS; sourceTree = "<group>"; };
+		A0E547981339593E0057EDA2 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		A0C7338A0F5BA80D00E777FB = {
 			isa = PBXGroup;
 			children = (
+				A0E547941339593E0057EDA2 /* AUTHORS */,
 				A0C733B70F5BAE3000E777FB /* acinclude.m4 */,
+				A0E547951339593E0057EDA2 /* ChangeLog */,
 				A0C733A90F5BAD1700E777FB /* configure.ac */,
+				A0E547961339593E0057EDA2 /* COPYING */,
 				A0C733C10F5BAFA200E777FB /* doc */,
 				A0C733D50F5BB3B500E777FB /* Makefile.am */,
-				A0C733C90F5BB2F500E777FB /* visa.tags */,
+				A0E547971339593E0057EDA2 /* NEWS */,
+				A0E547981339593E0057EDA2 /* README */,
 			);
 			sourceTree = "<group>";
 		};
@@ -43,7 +51,11 @@
 			isa = PBXProject;
 			buildConfigurationList = A0C7338F0F5BA80D00E777FB /* Build configuration list for PBXProject "visa" */;
 			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
 			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
 			mainGroup = A0C7338A0F5BA80D00E777FB;
 			projectDirPath = "";
 			projectRoot = "";
