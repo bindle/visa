@@ -61,7 +61,7 @@ Community
       http://www.bindlebinaries.com/products/nix/visa/
 
    Mailing List:
-      odbc-shell@lists.bindlebinaries.com
+      visa-stamp@lists.bindlebinaries.com
       https://lists.bindlebinaries.com/mailman/listinfo/visa
 
    Bug Reports:
@@ -80,7 +80,7 @@ Source Code
 
    Git URLs:
       git://github.com/bindle/visa.git
-      git://odbcshell.git.sourceforge.net/gitroot/visa-stamp/visa-stamp
+      git://visa-stamp.git.sourceforge.net/gitroot/visa-stamp/visa-stamp
       git://git.scm.bindlebinaries.com/pub/scm/com.bindlebinaries/visa.git
       http://http.scm.bindlebinaries.com/pub/scm/com.bindlebinaries/visa.git
       ssh://ssh.scm.bindlebinaries.com/pub/scm/com.bindlebinaries/visa.git
