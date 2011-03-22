@@ -1,20 +1,38 @@
 \input texinfo @c -*-texinfo-*-
 @c %**start of header
 @c
-@c Visa Single Sign-on Web System
-@c Copyright (C) 2009 David M. Syzdek <syzdek@bindlebinaries.net>
+@c Visa Single Sign-on System
+@c Copyright (C) 2011 Bindle Binaries <syzdek@bindlebinaries.com>.
 @c
-@c @VISA_DOC_COPYRIGHT_START@
+@c @BINDLE_BINARIES_BSD_LICENSE_START@
 @c
-@c Permission is granted to copy, distribute and/or modify this document
-@c under the terms of the GNU Free Documentation License, Version 1.2
-@c or any later version published by the Free Software Foundation;
-@c with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-@c A copy of the license is included in the section entitled "GNU
-@c Free Documentation License".
+@c Redistribution and use in source and binary forms, with or without
+@c modification, are permitted provided that the following conditions are
+@c met:
 @c
-@c @VISA_DOC_COPYRIGHT_END@
-@c 
+@c    * Redistributions of source code must retain the above copyright
+@c      notice, this list of conditions and the following disclaimer.
+@c    * Redistributions in binary form must reproduce the above copyright
+@c      notice, this list of conditions and the following disclaimer in the
+@c      documentation and/or other materials provided with the distribution.
+@c    * Neither the name of Bindle Binaries nor the
+@c      names of its contributors may be used to endorse or promote products
+@c      derived from this software without specific prior written permission.
+@c
+@c THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+@c IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+@c THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+@c PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL BINDLE BINARIES BE LIABLE FOR
+@c ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+@c DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+@c SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+@c CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+@c LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+@c OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+@c SUCH DAMAGE.
+@c
+@c @BINDLE_BINARIES_BSD_LICENSE_END@
+@c
 @c doc/readme.texi - provides overview of VISA
 @c
 
